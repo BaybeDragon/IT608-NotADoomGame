@@ -13,8 +13,6 @@ public class SpriteLookAtPlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 play = new Vector3 (player.transform.position.x, player.transform.position.y, player.transform.position.z);
-        transform.LookAt(play);
-        
+        transform.forward = player.transform.forward;
     }
 }
