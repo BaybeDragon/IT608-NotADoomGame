@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunShoot : MonoBehaviour
+public class WeaponKnife : MonoBehaviour
 {
+
     public int gunDamage = 1;
     public float fireRate = .25f;
-    public float weaponRange = 50f;
-    public float hitForce = 100f;
+    public float weaponRange = 4f;
+    public float hitForce = 10f;
     public Transform gunEnd;
-    public int ammo = 10;
 
     private Camera fpsCam;
     private WaitForSeconds shotDuration = new WaitForSeconds(.7f);
@@ -31,12 +31,9 @@ public class GunShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && Time.time > nextFire && ammo > 0)
+        if (Input.GetKey(KeyCode.Mouse0) && Time.time > nextFire)
         {
-            ammo--;
-            anim.SetTrigger("gunShoot");
             nextFire = Time.time + fireRate;
-            StartCoroutine(ShotEffect());
             Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
             RaycastHit hit;
             laserLine.SetPosition(0, gunEnd.position);
@@ -48,6 +45,7 @@ public class GunShoot : MonoBehaviour
                     health = hit.collider.GetComponent<EnemyHealth>();
                     if (health != null)
                     {
+                        anim.SetTrigger("knifeStab");
                         health.Damage(gunDamage);
                     }
                     if (hit.rigidbody != null)
@@ -62,13 +60,5 @@ public class GunShoot : MonoBehaviour
             }
         }
     }
-
-    private IEnumerator ShotEffect()
-    {
-        gunAudio.Play();
-        //laserLine.enabled = true;
-        yield return shotDuration;
-        laserLine.enabled = false;
-    }
-
+    
 }
