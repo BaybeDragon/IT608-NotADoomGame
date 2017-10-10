@@ -16,13 +16,17 @@ public class GunShoot : MonoBehaviour
     private AudioSource gunAudio;
     private LineRenderer laserLine;
     private float nextFire;
+    private Animator anim;
     EnemyHealth health;
+    
 
 
 
     // Use this for initialization
     void Start()
     {
+	void Start () {
+        anim = GetComponent<Animator>();
         laserLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
         fpsCam = GetComponentInParent<Camera>();
@@ -47,6 +51,7 @@ public class GunShoot : MonoBehaviour
                     health = hit.collider.GetComponent<EnemyHealth>();
                     if (health != null)
                     {
+                        anim.SetTrigger("knifeStab");
                         health.Damage(gunDamage);
                     }
                     if (hit.rigidbody != null)
@@ -71,7 +76,10 @@ public class GunShoot : MonoBehaviour
     }
 
     private void GunRecoil()
+    private void gunRecoil()
     {
 
+        
     }
+
 }
