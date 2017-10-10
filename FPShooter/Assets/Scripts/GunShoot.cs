@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunShoot : MonoBehaviour {
+public class GunShoot : MonoBehaviour
+{
     public int gunDamage = 1;
     public float fireRate = .25f;
     public float weaponRange = 50f;
     public float hitForce = 100f;
     public Transform gunEnd;
+    public int ammo = 10;
 
     private Camera fpsCam;
     private WaitForSeconds shotDuration = new WaitForSeconds(.7f);
@@ -18,17 +20,20 @@ public class GunShoot : MonoBehaviour {
 
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         laserLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
         fpsCam = GetComponentInParent<Camera>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	if(Input.GetKey(KeyCode.Mouse0) && Time.time > nextFire)
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.Mouse0) && Time.time > nextFire && ammo > 0)
         {
+            ammo--;
             nextFire = Time.time + fireRate;
             StartCoroutine(ShotEffect());
             Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
@@ -40,7 +45,7 @@ public class GunShoot : MonoBehaviour {
                 if (hit.collider.tag == "Enemy")
                 {
                     health = hit.collider.GetComponent<EnemyHealth>();
-                    if(health != null)
+                    if (health != null)
                     {
                         health.Damage(gunDamage);
                     }
@@ -55,7 +60,7 @@ public class GunShoot : MonoBehaviour {
                 laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
             }
         }
-	}
+    }
 
     private IEnumerator ShotEffect()
     {
