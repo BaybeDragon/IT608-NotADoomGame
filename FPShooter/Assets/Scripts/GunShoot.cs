@@ -18,14 +18,10 @@ public class GunShoot : MonoBehaviour
     private float nextFire;
     private Animator anim;
     EnemyHealth health;
-    
 
 
-
-    // Use this for initialization
     void Start()
     {
-	void Start () {
         anim = GetComponent<Animator>();
         laserLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
@@ -73,13 +69,6 @@ public class GunShoot : MonoBehaviour
         //laserLine.enabled = true;
         yield return shotDuration;
         laserLine.enabled = false;
-    }
-
-    private void GunRecoil()
-    private void gunRecoil()
-    {
-
-        
     }
 
 }
