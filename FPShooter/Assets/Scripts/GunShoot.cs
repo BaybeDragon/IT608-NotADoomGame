@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GunShoot : MonoBehaviour
 {
@@ -19,9 +20,13 @@ public class GunShoot : MonoBehaviour
     private Animator anim;
     EnemyHealth health;
 
+    public GameObject ammoText;
+    Text ammoAmount;
+
 
     void Start()
     {
+        ammoAmount = ammoText.GetComponent<Text>();
         anim = GetComponent<Animator>();
         laserLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
@@ -34,6 +39,7 @@ public class GunShoot : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0) && Time.time > nextFire && ammo > 0)
         {
             ammo--;
+            ammoAmount.text = ammo.ToString();
             anim.SetTrigger("gunShoot");
             nextFire = Time.time + fireRate;
             StartCoroutine(ShotEffect());

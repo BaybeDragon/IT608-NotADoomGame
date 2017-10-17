@@ -1,15 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStuff : MonoBehaviour
 {
 
-    public GameObject knife, pistol, hands, shotgun, rifle, subway;
-
+    public GameObject knife, pistol, hands, shotgun, rifle, subway, ammoText;
+    GunShoot pis, shot, rif, sub;
+    Text ammoAmount;
     // Use this for initialization
     void Start()
     {
+        ammoAmount = ammoText.GetComponent<Text>();
+        pis = pistol.GetComponent<GunShoot>();
+        shot = shotgun.GetComponent<GunShoot>();
+        rif = rifle.GetComponent<GunShoot>();
+        sub = subway.GetComponent<GunShoot>();
 
     }
 
@@ -38,16 +45,19 @@ public class PlayerStuff : MonoBehaviour
         {
             disableWeapons();
             hands.SetActive(true);
+            ammoAmount.text = "";
         }
         if (Input.GetKey(KeyCode.Alpha2))
         {
             disableWeapons();
             knife.SetActive(true);
+            ammoAmount.text = "";
         }
         if (Input.GetKey(KeyCode.Alpha3))
         {
             disableWeapons();
             pistol.SetActive(true);
+            ammoAmount.text = pis.ammo.ToString();
         }
         /*
         if (Input.GetKey(KeyCode.Alpha4))
@@ -70,10 +80,41 @@ public class PlayerStuff : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("ammoGun"))
+        if (other.gameObject.CompareTag("ammoPistol"))
         {
             other.gameObject.SetActive(false);
-            //GameObject.Find("Cube").getComponent("GunShoot.cs").Ammo--;
+            pis.ammo += 10;
+            if (pistol.activeInHierarchy)
+            {
+                ammoAmount.text = pis.ammo.ToString();
+            }
+        }
+        else if (other.gameObject.CompareTag("ammoShotgun"))
+        {
+            other.gameObject.SetActive(false);
+            shot.ammo += 10;
+            if (shotgun.activeInHierarchy)
+            {
+                ammoAmount.text = shot.ammo.ToString();
+            }
+        }
+        else if (other.gameObject.CompareTag("ammoRifle"))
+        {
+            other.gameObject.SetActive(false);
+            rif.ammo += 10;
+            if (rifle.activeInHierarchy)
+            {
+                ammoAmount.text = rif.ammo.ToString();
+            }
+        }
+        else if (other.gameObject.CompareTag("ammoSubway"))
+        {
+            other.gameObject.SetActive(false);
+            sub.ammo += 10;
+            if (subway.activeInHierarchy)
+            {
+                ammoAmount.text = sub.ammo.ToString();
+            }
         }
     }
 }
