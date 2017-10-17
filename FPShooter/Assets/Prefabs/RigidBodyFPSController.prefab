@@ -155,7 +155,7 @@ Transform:
   m_GameObject: {fileID: 1105541648846364}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000016292068}
   m_LocalPosition: {x: -4.8, y: 5, z: -2.2}
-  m_LocalScale: {x: 2.8743947, y: 2.8743954, z: 2.8743954}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4835302490543212}
   m_RootOrder: 3
@@ -453,6 +453,7 @@ MonoBehaviour:
   hitForce: 100
   gunEnd: {fileID: 4599122033621884}
   ammo: 10
+  ammoText: {fileID: 0}
 --- !u!114 &114733530093272960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -529,6 +530,7 @@ MonoBehaviour:
   shotgun: {fileID: 0}
   rifle: {fileID: 0}
   subway: {fileID: 0}
+  ammoText: {fileID: 0}
 --- !u!120 &120201705212439910
 LineRenderer:
   m_ObjectHideFlags: 1
