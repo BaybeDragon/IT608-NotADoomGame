@@ -42,10 +42,10 @@ public class WeaponKnife : MonoBehaviour
                 laserLine.SetPosition(1, hit.point);
                 if (hit.collider.tag == "Enemy")
                 {
+                    anim.SetTrigger("knifeStab");
                     health = hit.collider.GetComponent<EnemyHealth>();
                     if (health != null)
                     {
-                        anim.SetTrigger("knifeStab");
                         health.Damage(gunDamage);
                     }
                     if (hit.rigidbody != null)
@@ -57,6 +57,8 @@ public class WeaponKnife : MonoBehaviour
             else
             {
                 laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
+                anim.SetTrigger("knifeStabMiss");
+
             }
         }
     }
