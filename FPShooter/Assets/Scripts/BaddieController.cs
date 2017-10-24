@@ -10,12 +10,13 @@ public class BaddieController : MonoBehaviour {
     public float fireRateMin = 0.25f;
     public float fireRateMax = 1.5f;
     private float nextFire = 0f;
+    PlayerStuff playerScript;
 
     // Use this for initialization
     void Start () {
         triggered = false;
         anim = GetComponent<Animator>();
-
+        playerScript = player.GetComponent<PlayerStuff>();
     }
 
     // Update is called once per frame
@@ -27,8 +28,13 @@ public class BaddieController : MonoBehaviour {
             
             if(Time.time > nextFire)
             {
-                anim.SetTrigger("BaddieShoot");
+                float acc = Random.Range(0, 100);
                 nextFire = Time.time + Random.Range(fireRateMin, fireRateMax);
+                anim.SetTrigger("BaddieShoot");
+                if (acc < 80)
+                {
+                    playerScript.TakeDamage(10);
+                }
             }
         }
 	}

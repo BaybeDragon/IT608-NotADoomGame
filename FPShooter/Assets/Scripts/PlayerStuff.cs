@@ -5,19 +5,20 @@ using UnityEngine.UI;
 
 public class PlayerStuff : MonoBehaviour
 {
-
-    public GameObject knife, pistol, hands, shotgun, rifle, subway, ammoText;
+    int playerHealth = 100;
+    public GameObject knife, pistol, hands, shotgun, rifle, subway, ammoText, playerText;
     GunShoot pis, shot, rif, sub;
-    Text ammoAmount;
+    Text ammoAmount,playerHealthText;
     // Use this for initialization
     void Start()
     {
         ammoAmount = ammoText.GetComponent<Text>();
+        playerHealthText = playerText.GetComponent<Text>();
         pis = pistol.GetComponent<GunShoot>();
         shot = shotgun.GetComponent<GunShoot>();
         rif = rifle.GetComponent<GunShoot>();
         sub = subway.GetComponent<GunShoot>();
-
+        playerHealthText.text = "100";
     }
 
     void disableWeapons()
@@ -35,6 +36,7 @@ public class PlayerStuff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerHealthText.text = playerHealth.ToString();
         checkWeapons();
     }
 
@@ -76,6 +78,15 @@ public class PlayerStuff : MonoBehaviour
             subway.SetActive(true);
         }
         */
+    }
+
+    public void TakeDamage(int dmgAmmount)
+    {
+        playerHealth -= dmgAmmount;
+        if(playerHealth <= 0)
+        {
+            
+        }
     }
 
     void OnTriggerEnter(Collider other)
