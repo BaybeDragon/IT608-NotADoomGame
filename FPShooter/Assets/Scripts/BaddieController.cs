@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaddieController : MonoBehaviour {
 
+    public GameObject rayOrigin;
     public GameObject player;
     bool triggered;
     Animator anim;
@@ -31,9 +32,21 @@ public class BaddieController : MonoBehaviour {
                 float acc = Random.Range(0, 100);
                 nextFire = Time.time + Random.Range(fireRateMin, fireRateMax);
                 anim.SetTrigger("BaddieShoot");
-                if (acc < 80)
+
+
+                //raycast goes hereVector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
+                RaycastHit hit;
+                
+                if (Physics.Raycast(rayOrigin.transform.position, rayOrigin.transform.forward, out hit, 20))
                 {
-                    playerScript.TakeDamage(10);
+                    //Debug.Log("Seen");
+                    if (hit.collider.tag == "Player")
+                    {
+                        if (acc < 80)
+                        {
+                            playerScript.TakeDamage(10);
+                        }
+                    }
                 }
             }
         }
