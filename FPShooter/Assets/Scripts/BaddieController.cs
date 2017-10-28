@@ -22,6 +22,7 @@ public class BaddieController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        
         transform.forward = player.transform.forward;
         if (triggered)
         {
@@ -37,7 +38,7 @@ public class BaddieController : MonoBehaviour {
                 //raycast goes hereVector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
                 RaycastHit hit;
                 
-                if (Physics.Raycast(rayOrigin.transform.position, rayOrigin.transform.forward, out hit, 20))
+                if (Physics.Raycast(rayOrigin.transform.position, rayOrigin.transform.forward, out hit, 100))
                 {
                     //Debug.Log("Seen");
                     if (hit.collider.tag == "Player")
