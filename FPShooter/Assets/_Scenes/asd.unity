@@ -147,6 +147,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114475442765435776, guid: bc4e939214911024f98fa4459e2b7d53,
+        type: 2}
+      propertyPath: ammoText
+      value: 
+      objectReference: {fileID: 976748337}
     - target: {fileID: 114755383334663546, guid: bc4e939214911024f98fa4459e2b7d53,
         type: 2}
       propertyPath: ammoText
@@ -157,6 +162,7 @@ Prefab:
       propertyPath: playerText
       value: 
       objectReference: {fileID: 793300902}
+<<<<<<< HEAD
     - target: {fileID: 114475442765435776, guid: bc4e939214911024f98fa4459e2b7d53,
         type: 2}
       propertyPath: ammoText
@@ -167,6 +173,8 @@ Prefab:
       propertyPath: m_Volume
       value: 0.65
       objectReference: {fileID: 0}
+=======
+>>>>>>> cb0036978592c7f9e2fafb10e5a8b839a48e3485
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc4e939214911024f98fa4459e2b7d53, type: 2}
   m_IsPrefabParent: 0

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerStuff : MonoBehaviour
 {
+    public string stage;
     int playerHealth = 100;
     public GameObject knife, pistol, hands, shotgun, rifle, subway, ammoText, playerText;
     GunShoot pis, shot, rif, sub;
@@ -85,7 +87,7 @@ public class PlayerStuff : MonoBehaviour
         playerHealth -= dmgAmmount;
         if(playerHealth <= 0)
         {
-            
+            SceneManager.LoadSceneAsync(stage);
         }
     }
 

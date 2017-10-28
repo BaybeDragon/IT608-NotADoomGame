@@ -523,6 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e8e359ec0ed0f4ebff4deed69446e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stage: asd
   knife: {fileID: 1925351161140808}
   pistol: {fileID: 1394778634040714}
   hands: {fileID: 1105541648846364}
