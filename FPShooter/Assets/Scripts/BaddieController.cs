@@ -43,11 +43,14 @@ public class BaddieController : MonoBehaviour {
                     anim.SetTrigger("BaddieShoot");
 
 
-                    //raycast goes hereVector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
-                    RaycastHit hit;
 
-                    if (Physics.Raycast(rayOrigin.transform.position, rayOrigin.transform.forward, out hit, 100))
+
+                    //raycast goes hereVector3 
+                    RaycastHit hit;
+                    Ray rayTest = new Ray(rayOrigin.transform.position, player.transform.position - transform.position);
+                    if (Physics.Raycast(rayTest, out hit, 100f))
                     {
+                        Debug.DrawRay(rayOrigin.transform.position, player.transform.position - transform.position * 100, Color.blue);
                         //Debug.Log("Seen");
                         if (hit.collider.tag == "Player")
                         {
@@ -57,6 +60,11 @@ public class BaddieController : MonoBehaviour {
                             }
                         }
                     }
+
+
+
+
+
                 }
             }
             else
