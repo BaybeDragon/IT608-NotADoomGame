@@ -31,29 +31,40 @@ public class BaddieController : MonoBehaviour {
         if (triggered)
         {
             anim.SetBool("BaddieTriggered", true);
-            agent.destination = player.transform.position;
-            if(Time.time > nextFire)
+            //Debug.Log(Vector3.Distance(transform.position, player.transform.position));
+            if(Vector3.Distance(transform.position,player.transform.position) <= 10f)
             {
-                float acc = Random.Range(0, 100);
-                nextFire = Time.time + Random.Range(fireRateMin, fireRateMax);
-                anim.SetTrigger("BaddieShoot");
-
-
-                //raycast goes hereVector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
-                RaycastHit hit;
-                
-                if (Physics.Raycast(rayOrigin.transform.position, rayOrigin.transform.forward, out hit, 100))
+                anim.SetBool("BaddieWalking", false);
+                agent.destination = transform.position;
+                if (Time.time > nextFire)
                 {
-                    //Debug.Log("Seen");
-                    if (hit.collider.tag == "Player")
+                    float acc = Random.Range(0, 100);
+                    nextFire = Time.time + Random.Range(fireRateMin, fireRateMax);
+                    anim.SetTrigger("BaddieShoot");
+
+
+                    //raycast goes hereVector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
+                    RaycastHit hit;
+
+                    if (Physics.Raycast(rayOrigin.transform.position, rayOrigin.transform.forward, out hit, 100))
                     {
-                        if (acc < 80)
+                        //Debug.Log("Seen");
+                        if (hit.collider.tag == "Player")
                         {
-                            playerScript.TakeDamage(10);
+                            if (acc < 80)
+                            {
+                                playerScript.TakeDamage(10);
+                            }
                         }
                     }
                 }
             }
+            else
+            {
+                agent.destination = player.transform.position;
+                anim.SetBool("BaddieWalking", true);
+            }
+
         }
 	}
 
