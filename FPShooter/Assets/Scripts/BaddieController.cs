@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BaddieController : MonoBehaviour {
 
@@ -12,9 +13,12 @@ public class BaddieController : MonoBehaviour {
     public float fireRateMax = 1.5f;
     private float nextFire = 0f;
     PlayerStuff playerScript;
+    NavMeshAgent agent;
+    
 
     // Use this for initialization
     void Start () {
+        agent = GetComponent<NavMeshAgent>();
         triggered = false;
         anim = GetComponent<Animator>();
         playerScript = player.GetComponent<PlayerStuff>();
@@ -27,7 +31,7 @@ public class BaddieController : MonoBehaviour {
         if (triggered)
         {
             anim.SetBool("BaddieTriggered", true);
-            
+            agent.destination = player.transform.position;
             if(Time.time > nextFire)
             {
                 float acc = Random.Range(0, 100);
