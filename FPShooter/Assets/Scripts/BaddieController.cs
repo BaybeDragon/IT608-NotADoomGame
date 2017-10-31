@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class BaddieController : MonoBehaviour {
-
+    public GameObject main;
     public GameObject rayOrigin;
     public GameObject player;
     bool triggered;
@@ -18,7 +18,7 @@ public class BaddieController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        agent = GetComponent<NavMeshAgent>();
+        agent = main.GetComponent<NavMeshAgent>();
         triggered = false;
         anim = GetComponent<Animator>();
         playerScript = player.GetComponent<PlayerStuff>();
@@ -45,12 +45,13 @@ public class BaddieController : MonoBehaviour {
 
 
 
-                    //raycast goes hereVector3 
+                    //raycast goes here
                     RaycastHit hit;
-                    Ray rayTest = new Ray(rayOrigin.transform.position, player.transform.position - transform.position);
+                    rayOrigin.transform.LookAt(player.transform.position);
+                    Ray rayTest = new Ray(rayOrigin.transform.position, rayOrigin.transform.forward);
                     if (Physics.Raycast(rayTest, out hit, 100f))
                     {
-                        Debug.DrawRay(rayOrigin.transform.position, player.transform.position - transform.position * 100, Color.blue);
+                        Debug.DrawRay(rayOrigin.transform.position, rayOrigin.transform.forward * 100, Color.blue);
                         //Debug.Log("Seen");
                         if (hit.collider.tag == "Player")
                         {
