@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114373787538744794}
   - component: {fileID: 65942093772771948}
   - component: {fileID: 54898387026938476}
+  - component: {fileID: 114010904888424492}
   m_Layer: 0
   m_Name: AmmoPistol
   m_TagString: ammoPistol
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1587365094619166}
   m_LocalRotation: {x: 0, y: 0.026176924, z: 0, w: 0.99965733}
-  m_LocalPosition: {x: -0.3712387, y: 7.31, z: -7.5834513}
+  m_LocalPosition: {x: -2.9, y: 6.38, z: -7.29}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
@@ -70,6 +71,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9.43, y: 5.43, z: 0.01}
   m_Center: {x: -2.41, y: 0.48, z: 0}
+--- !u!114 &114010904888424492
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1587365094619166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b7646836d18804898ccefab732edfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!114 &114373787538744794
 MonoBehaviour:
   m_ObjectHideFlags: 1
