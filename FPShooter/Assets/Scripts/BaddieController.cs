@@ -7,6 +7,8 @@ public class BaddieController : MonoBehaviour {
     public GameObject main;
     public GameObject rayOrigin;
     public GameObject player;
+    public float range = 10;
+
     bool triggered;
     Animator anim;
     public float fireRateMin = 0.25f;
@@ -32,7 +34,7 @@ public class BaddieController : MonoBehaviour {
         {
             anim.SetBool("BaddieTriggered", true);
             //Debug.Log(Vector3.Distance(transform.position, player.transform.position));
-            if(Vector3.Distance(transform.position,player.transform.position) <= 10f)
+            if(Vector3.Distance(transform.position,player.transform.position) <= range)
             {
                 anim.SetBool("BaddieWalking", false);
                 agent.destination = transform.position;
