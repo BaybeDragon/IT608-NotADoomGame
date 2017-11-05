@@ -93,6 +93,8 @@ public class PlayerStuff : MonoBehaviour
         }
     }
 
+
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("ammoPistol"))
@@ -103,6 +105,12 @@ public class PlayerStuff : MonoBehaviour
             {
                 ammoAmount.text = pis.ammo.ToString();
             }
+        }
+        else if (other.gameObject.CompareTag("Health"))
+        {
+            playerHealth += 30;
+            other.gameObject.SetActive(false);
+
         }
         /*
         else if (other.gameObject.CompareTag("ammoShotgun"))

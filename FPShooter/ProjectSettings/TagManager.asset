@@ -12,6 +12,7 @@ TagManager:
   - ammoRifle
   - ammoSubway
   - Boss
+  - Health
   layers:
   - Default
   - TransparentFX
