@@ -8,8 +8,8 @@ public class PlayerStuff : MonoBehaviour
 {
     public string stage;
     int playerHealth = 100;
-    public GameObject knife, pistol, hands, shotgun, rifle, subway, ammoText, playerText;
-    GunShoot pis, shot, rif, sub;
+    public GameObject knife, pistol, hands, ammoText, playerText;
+    GunShoot pis;
     Text ammoAmount,playerHealthText;
     // Use this for initialization
     void Start()
@@ -17,9 +17,11 @@ public class PlayerStuff : MonoBehaviour
         ammoAmount = ammoText.GetComponent<Text>();
         playerHealthText = playerText.GetComponent<Text>();
         pis = pistol.GetComponent<GunShoot>();
+        /*
         shot = shotgun.GetComponent<GunShoot>();
         rif = rifle.GetComponent<GunShoot>();
         sub = subway.GetComponent<GunShoot>();
+        */
         playerHealthText.text = "100";
     }
 
@@ -102,6 +104,7 @@ public class PlayerStuff : MonoBehaviour
                 ammoAmount.text = pis.ammo.ToString();
             }
         }
+        /*
         else if (other.gameObject.CompareTag("ammoShotgun"))
         {
             other.gameObject.SetActive(false);
@@ -129,5 +132,6 @@ public class PlayerStuff : MonoBehaviour
                 ammoAmount.text = sub.ammo.ToString();
             }
         }
+        */
     }
 }

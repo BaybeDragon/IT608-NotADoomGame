@@ -19,6 +19,7 @@ public class GunShoot : MonoBehaviour
     private float nextFire;
     private Animator anim;
     EnemyHealth health;
+    BossController boss;
 
     public GameObject ammoText;
     Text ammoAmount;
@@ -55,6 +56,18 @@ public class GunShoot : MonoBehaviour
                     if (health != null)
                     {
                         health.Damage(gunDamage);
+                    }
+                    if (hit.rigidbody != null)
+                    {
+                        hit.rigidbody.AddForce(-hit.normal * hitForce);
+                    }
+                }
+                else if(hit.collider.tag == "Boss")
+                {
+                    boss = hit.collider.GetComponent<BossController>();
+                    if (boss != null)
+                    {
+                        boss.Damage(gunDamage);
                     }
                     if (hit.rigidbody != null)
                     {
