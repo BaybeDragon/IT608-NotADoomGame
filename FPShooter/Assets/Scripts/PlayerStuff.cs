@@ -8,7 +8,7 @@ public class PlayerStuff : MonoBehaviour
 {
     public string stage;
     int playerHealth = 100;
-    public GameObject knife, pistol, hands, ammoText, playerText;
+    public GameObject knife, pistol, hands, ammoText, playerText,deathScreen;
     GunShoot pis;
     Text ammoAmount,playerHealthText;
     // Use this for initialization
@@ -22,7 +22,7 @@ public class PlayerStuff : MonoBehaviour
         rif = rifle.GetComponent<GunShoot>();
         sub = subway.GetComponent<GunShoot>();
         */
-        playerHealthText.text = "100";
+        playerHealthText.text = playerHealth.ToString();
     }
 
     void disableWeapons()
@@ -89,6 +89,8 @@ public class PlayerStuff : MonoBehaviour
         playerHealth -= dmgAmmount;
         if(playerHealth <= 0)
         {
+            
+            deathScreen.SetActive(true);
             SceneManager.LoadSceneAsync(stage);
         }
     }
