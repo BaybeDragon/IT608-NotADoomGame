@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour {
 
-    public int currentHealth = 3;
+    public int currentHealth = 2;
+    public GameObject door;
+    OpenDoor doorscript; 
+
+    void Start()
+    {
+        doorscript = door.GetComponent<OpenDoor>();
+    }
 
     public void Damage(int damageAmount)
     {
@@ -12,6 +19,7 @@ public class EnemyHealth : MonoBehaviour {
         if (currentHealth <= 0)
         { 
             gameObject.SetActive(false);
+            doorscript.addKill();
         }
     }
 }
