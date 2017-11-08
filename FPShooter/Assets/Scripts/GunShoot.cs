@@ -8,7 +8,7 @@ public class GunShoot : MonoBehaviour
     public int gunDamage = 1;
     public float fireRate = .25f;
     public float weaponRange = 50f;
-    public float hitForce = 100f;
+    public float hitForce = 0f;
     public Transform gunEnd;
     public int ammo = 10;
 
@@ -56,10 +56,6 @@ public class GunShoot : MonoBehaviour
                     if (health != null)
                     {
                         health.Damage(gunDamage);
-                    }
-                    if (hit.rigidbody != null)
-                    {
-                        hit.rigidbody.AddForce(-hit.normal * hitForce);
                     }
                 }
                 else if(hit.collider.tag == "Boss")
